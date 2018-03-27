@@ -6,16 +6,17 @@ import sys
 
 
 if __name__ == "__main__":
+	args = sys.argv[1:]
 	#create data-store
-	data_store = data_store.DataStore()
-	#load data into data-store
-	data_loader = data_loader.DataLoader(data_store)
-	data_loader.load_json_data()
+	data_store = data_store.DataStore(args[0])
+	# #load data into data-store
+	# data_loader = data_loader.DataLoader(data_store)
+	# data_loader.load_json_data()
 
 	# get the value of minimum distance limit from command line
-	args = sys.argv[1:]
-	distance_limit = int(args[0])
-	office_id = int(args[1])
+	
+	distance_limit = int(args[1])
+	office_id = int(args[2])
 
 	if not data_store.offices.get(office_id, None):
 		print ("Office id not found")

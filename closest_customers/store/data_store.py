@@ -1,16 +1,16 @@
+from data_loader import DataLoader
+
 class DataStore(object):
-	def __init__(self):
+	def __init__(self, path):
+		self.data_loader = DataLoader(path)
 		self.customers = {}
 		self.offices = {}
 
-	def add_customer(self, customer):
-		if not self.customers.get(customer.id):
-			self.customers[customer.id] = customer
-		else:
-			print("ERROR: customer id already exists")
+		self.add_customers()
+		self.add_offices()
 
-	def add_office(self, office):
-		if not self.offices.get(office.id):
-			self.offices[office.id] = office
-		else:
-			print("ERROR: office id already exists")
+	def add_customers(self):
+		self.customers = self.data_loader.get_customer_objects()
+
+	def add_offices(self):
+		self.offices = self.data_loader.get_office_objects()

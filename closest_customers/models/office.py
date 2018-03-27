@@ -1,11 +1,12 @@
+from location import Location
+
 class Office(object):
 	'''Class to represent office'''
 
 	def __init__(self, office_id, name, latitude, longitude):
 		self.id = office_id
 		self.name = name
-		self.latitude = latitude
-		self.longitude = longitude
+		self.location = Location(latitude, longitude)
 
 	def get_user_id(self):
 		return self.id
@@ -13,8 +14,5 @@ class Office(object):
 	def get_name(self):
 		return self.name
 
-	def get_latitude(self):
-		return self.latitude
-
-	def get_longitude(self):
-		return self.longitude
+	def get_location(self):
+		return self.location

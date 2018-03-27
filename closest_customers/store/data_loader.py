@@ -4,24 +4,26 @@ import json
 
 class DataLoader(object):
 	'''Loads and reads raw data from file and convert it to data objects'''
-	def __init__(self, data_store):
-		self.path = None
-		self.customers = None
-		self.data_store = data_store
+	def __init__(self, path):
+		self.path = path
+		self.data = None
+
+		self.load_json_data()
 
 	def load_json_data(self):
-		with open('data.json') as data_file:
-			data = json.load(data_file)
+		with open(self.path) as data_file:
+			self.data = json.load(data_file)
 
-			self.customers = data["customers"]
-			self.offices = data["offices"]
+	def get_customer_objects(self):
+		customers = {}
+		for customer in self.data["customers"]:
+			new_customer = self.create_customer(customer)
+			if not customers.get(new_customer.id):
+				customers[new_customer.id] = new_customer
+			else:
+				print("ERROR: customer id already exists")
 
-		self.create_customer_data()
-		self.create_office_data()
-
-	def create_customer_data(self):
-		for customer in self.customers:
-			self.create_customer(customer)
+		return customers
 
 	def create_customer(self, ob):
 		latitude = ob["latitude"]
@@ -33,11 +35,17 @@ class DataLoader(object):
 		longitude = MathsConversions.get_radian(float(longitude))
 
 		new_customer = customer.Customer(user_id, name, latitude, longitude)
-		self.data_store.add_customer(new_customer)
+		return new_customer
 
-	def create_office_data(self):
-		for office in self.offices:
-			self.create_office(office)
+	def get_office_objects(self):
+		offices = {}
+		for office in self.data["offices"]:
+			new_office = self.create_office(office)
+			if not offices.get(new_office.id):
+				offices[new_office.id] = new_office
+			else:
+				print("ERROR: office id already exists")
+		return offices
 
 	def create_office(self, ob):
 		latitude = ob["latitude"]
@@ -49,4 +57,4 @@ class DataLoader(object):
 		longitude = MathsConversions.get_radian(float(longitude))
 
 		new_office = office.Office(user_id, name, latitude, longitude)
-		self.data_store.add_office(new_office)
+		return new_office
