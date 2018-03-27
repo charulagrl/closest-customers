@@ -1,4 +1,6 @@
 class Customer(object):
+	'''Class to represent customer'''
+
 	def __init__(self, user_id, name, latitude, longitude):
 		self.id = user_id
 		self.name = name

@@ -1,4 +1,6 @@
 class Office(object):
+	'''Class to represent office'''
+
 	def __init__(self, office_id, name, latitude, longitude):
 		self.id = office_id
 		self.name = name

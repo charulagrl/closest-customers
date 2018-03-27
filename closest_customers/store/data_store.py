@@ -11,6 +11,6 @@ class DataStore(object):
 
 	def add_office(self, office):
 		if not self.offices.get(office.id):
-			self.customers[office.id] = office
+			self.offices[office.id] = office
 		else:
 			print("ERROR: office id already exists")
