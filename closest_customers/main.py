@@ -1,6 +1,7 @@
 from models import customer
 from store import data_loader, data_store
 from controller import distance
+from views import results
 import sys
 
 
@@ -23,3 +24,8 @@ if __name__ == "__main__":
 	# Calculate distances between office and all customers
 	distance = distance.Distance(distance_limit)
 	distance.calculate_distances(data_store, office_id)
+
+	# display customer details sorted by user id
+	results.Result.display_sorted_by_id_result(distance.distances, data_store.customers)
+
+

@@ -18,8 +18,6 @@ class Distance(object):
 			if distance > self.limit:
 				self.distances[customer.id] = distance
 
-		print self.distances
-
 	def get_distance(self, latitude, longitude, office_lat, office_long):
 		# Calculate distance using the formula given her
 		# https://en.wikipedia.org/wiki/Great-circle_distance
