@@ -27,5 +27,3 @@ if __name__ == "__main__":
 
 	# display customer details sorted by user id
 	results.Result.display_sorted_by_id_result(distance.distances, data_store.customers)
-
-

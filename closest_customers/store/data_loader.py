@@ -10,7 +10,7 @@ class DataLoader(object):
 		self.data_store = data_store
 
 	def load_json_data(self):
-		with open('customers.json') as data_file:
+		with open('data.json') as data_file:
 			data = json.load(data_file)
 
 			self.customers = data["customers"]
