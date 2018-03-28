@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class Customer(object):
 	'''Class to represent customer'''
 

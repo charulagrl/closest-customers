@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+
 from .data_loader import DataLoader
 
 class DataStore(object):
-	def __init__(self):
-		self.data_loader = DataLoader()
+	def __init__(self, path):
+		self.data_loader = DataLoader(path)
 		self.customers = self.data_loader.get_customer_objects()
 		self.offices = self.data_loader.get_office_objects()
 

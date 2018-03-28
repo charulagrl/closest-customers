@@ -1,12 +1,14 @@
-from models import customer, office, location
-from config import Config
+# -*- coding: utf-8 -*-
+
+from closest_customers.models import customer, office, location
+from closest_customers.config import Config
 import logging
 import json
 
 class DataLoader(object):
 	'''Loads and reads raw data from file and convert it to data objects'''
-	def __init__(self):
-		self.path = Config.path
+	def __init__(self, path):
+		self.path = path
 		self.data = None
 
 		self.load_json_data()

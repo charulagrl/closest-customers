@@ -1,12 +1,14 @@
+# -*- coding: utf-8 -*-
+
 import logging
 import math
-import config
+from closest_customers.config import Production
 
 class Distance(object):
 	'''Class to calculate distance between office and all customers'''
-	def __init__(self):
+	def __init__(self, limit=-1):
 		self.distances = {}
-		self.limit = config.Config.limit
+		self.limit = Production.distance_limit if limit < 0 else limit
 
 	def calculate_distances(self, data_store, office_id):
 		customers = data_store.get_all_customers()
