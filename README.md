@@ -15,3 +15,7 @@ python main.py <officeid>
 ### Change data-set:
 
 Sample data-set is written in a file data.json. To change the data-set it can written in the similar fashion as given in the file.
+
+### Error log:
+
+Logs will be generated in a file looger.log. For any incorrect output, please check the error log.
