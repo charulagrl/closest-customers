@@ -1,4 +1,4 @@
-from data_loader import DataLoader
+from .data_loader import DataLoader
 
 class DataStore(object):
 	def __init__(self):

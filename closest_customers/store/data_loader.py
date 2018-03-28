@@ -103,7 +103,7 @@ class DataLoader(object):
 
 	def is_valid(self, id, name):
 		'''Check if id and name is valid'''
-		if isinstance(id, int) and isinstance(name, basestring) and name != "":
+		if isinstance(id, int) and (isinstance(name, str) or isinstance(name, unicode)) and name != "":
 			return True
 		else:
 			return False

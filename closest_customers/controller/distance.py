@@ -3,6 +3,7 @@ import math
 import config
 
 class Distance(object):
+	'''Class to calculate distance between office and all customers'''
 	def __init__(self):
 		self.distances = {}
 		self.limit = config.Config.limit
