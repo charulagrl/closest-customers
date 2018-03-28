@@ -1,4 +1,3 @@
-from utils.maths_conversions import MathsConversions
 import math
 
 class Location(object):
@@ -7,7 +6,7 @@ class Location(object):
 		self.longitude = longitude
 
 	def get_radian_location(self):
-		return (math.radians(self.latitude), math.radians(self.longitude))
+		return (self.get_radian_latitude(), self.get_radian_longitude())
 
 	def get_radian_latitude(self):
 		return math.radians(self.latitude)
@@ -16,9 +15,9 @@ class Location(object):
 		return math.radians(self.longitude)
 
 	def get_sin_latitude(self):
-		latitude = math.radians(self.latitude)
+		latitude = self.get_radian_latitude()
 		return math.sin(latitude)
 
 	def get_cos_latitude(self):
-		latitude = math.radians(self.latitude)
+		latitude = self.get_radian_latitude()
 		return math.cos(latitude)

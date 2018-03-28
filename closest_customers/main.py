@@ -2,28 +2,23 @@ from models import customer
 from store import data_loader, data_store
 from controller import distance
 from views import results
+import logging
 import sys
 
 
 if __name__ == "__main__":
+	logging.basicConfig(filename='logger.log', level=logging.INFO)
 	args = sys.argv[1:]
 	#create data-store
-	data_store = data_store.DataStore(args[0])
-	# #load data into data-store
-	# data_loader = data_loader.DataLoader(data_store)
-	# data_loader.load_json_data()
+	data_store = data_store.DataStore()
+	office_id = int(args[0])
 
-	# get the value of minimum distance limit from command line
-	
-	distance_limit = int(args[1])
-	office_id = int(args[2])
-
-	if not data_store.offices.get(office_id, None):
-		print ("Office id not found")
+	if not data_store.get_office_by_id(office_id):
+		logging.error("Office id not found")
 		exit()
 
 	# Calculate distances between office and all customers
-	distance = distance.Distance(distance_limit)
+	distance = distance.Distance()
 	distance.calculate_distances(data_store, office_id)
 
 	# display customer details sorted by user id
